@@ -33,8 +33,7 @@ function incrementPlayer1Score() {
 function incrementPlayer2Score() {
   return score2++;
 }
-// const img1 = setRandomImage(firstImage);
-// const img2 = setRandomImage(secondImage);
+
 
 function checkWinOrDraw() {
   const newImg1 = setRandomImage(firstImage);
