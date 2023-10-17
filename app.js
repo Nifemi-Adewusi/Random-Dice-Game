@@ -8,6 +8,8 @@ const secondImage = document.querySelector(".img2");
 const button = document.querySelector(".btn");
 const player1Score = document.querySelector(".player-1");
 const player2Score = document.querySelector(".player-2");
+const maxNumber = 20;
+const reloadLink = document.querySelector("a");
 
 const imgElements = [
   "images/dice1.png",
@@ -34,8 +36,15 @@ function incrementPlayer2Score() {
   return score2++;
 }
 
+function resetGame() {
+  score1 = 1;
+  score2 = 1;
+  player1Score.innerHTML = "";
+  player2Score.innerHTML = "";
+}
 
 function checkWinOrDraw() {
+  button.innerHTML = "Roll Dice";
   const newImg1 = setRandomImage(firstImage);
   const newImg2 = setRandomImage(secondImage);
   if (newImg1 > newImg2) {
@@ -47,6 +56,13 @@ function checkWinOrDraw() {
   } else if (newImg1 === newImg2) {
     heading.innerHTML = `Draw 🏳️`;
   }
+  if (score1 >= maxNumber || score2 >= maxNumber) {
+    heading.innerHTML += "<br>Game Over!";
+    button.innerHTML = "Restart";
+    resetGame();
+  }
 }
 
 button.addEventListener("click", checkWinOrDraw);
+
+
